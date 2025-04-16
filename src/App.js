@@ -1,24 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import * as React from "react";
 
+import { Navbar } from "@heroui/navbar";
+import { BrowserRouter, Route, Routes, Link } from "react-router-dom";
+import TablePage from "./pages/TablePage";
+import ListPage from "./pages/ListPage";
+import "./App.css";
+import { HeroUIProvider } from "@heroui/react";
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <HeroUIProvider>
+      <BrowserRouter>
+          <div className="App">
+            <Navbar>
+              <Link to="/list">List</Link>
+              <Link to="/table">Table</Link>
+            </Navbar>
+              <Routes>
+                <Route path="/" element={<TablePage />} />
+                <Route path="/list" element={<ListPage />} />
+                <Route path="/table" element={<TablePage />} />
+              </Routes>
+          </div>
+      </BrowserRouter>
+    </HeroUIProvider>
   );
 }
 
