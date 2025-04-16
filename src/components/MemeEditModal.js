@@ -51,7 +51,7 @@ export default function MemeEditModal({ isOpen, onClose, meme, onSave }) {
             type="number"
             value={editedMeme.likes}
             onChange={handleChange}
-            min="0"
+            min="2"
             max="99"
             required
           />
